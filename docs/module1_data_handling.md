@@ -20,9 +20,20 @@ Run with:
 python src/data_handling/download_data.py
 ```
 
+## Dataset Statistics
+
+| Class | Count | Percentage |
+|---|---|---|
+| `class_0_non_agri` | 3000 | 50.0% |
+| `class_1_agri` | 3000 | 50.0% |
+| **Total** | **6000** | 100% |
+
+- **Balanced dataset** — no class imbalance handling needed for training.
+- **Image size**: 64x64 pixels (RGB, JPEG format).
+
 ## Next Steps
 
-- [ ] Inspect class distribution (image counts per class)
+- [x] Inspect class distribution (image counts per class)
 - [ ] Implement memory-based data loader (Keras)
 - [ ] Implement generator-based data loader (PyTorch)
 - [ ] Apply data augmentation
