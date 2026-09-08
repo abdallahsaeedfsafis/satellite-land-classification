@@ -33,3 +33,28 @@ satellite-land-classification/
 ## Status
 
 Work in progress — built incrementally, module by module.
+
+## Environments
+
+This project separates TensorFlow and PyTorch work into two environments to avoid
+dependency conflicts between the two frameworks:
+
+- **TensorFlow/Keras environment** — used for Keras-based scripts (e.g. `memory_loader.py`).
+  Requires: `tensorflow`, `Pillow`
+- **PyTorch environment** — used for PyTorch-based scripts (e.g. `generator_loader.py`,
+  CNN/ViT models). Requires: `torch`, `torchvision`, `Pillow`
+
+You can create these as two separate virtual environments (venv/conda) named however you like,
+e.g.:
+
+```bash
+# TensorFlow environment
+python -m venv venv-tf
+pip install tensorflow Pillow requests
+
+# PyTorch environment
+python -m venv venv-torch
+pip install torch torchvision Pillow requests
+```
+
+Activate the relevant environment depending on which script you're running.
