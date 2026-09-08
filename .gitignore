@@ -1,0 +1,27 @@
+# ==== Data ====
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.tar
+*.tar.gz
+*.zip
+
+# ==== Python ====
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+env/
+*.egg-info/
+
+# ==== Model outputs (heavy files) ====
+outputs/models/*.pt
+outputs/models/*.h5
+outputs/models/*.keras
+!outputs/models/.gitkeep
+
+# ==== OS / Editor ====
+.DS_Store
+.vscode/
+*.log
