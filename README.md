@@ -19,15 +19,19 @@ approaches across Keras and PyTorch.
 
 ## Project Structure
 
+## Project Structure
+
+\`\`\`
 satellite-land-classification/
-├── data/ # raw & processed data (gitignored)
-├── notebooks/ # exploratory notebooks per module
+├── data/               # raw & processed data (gitignored)
+├── notebooks/          # exploratory notebooks per module
 ├── src/
-│ ├── data_handling/
-│ ├── models/
-│ └── utils/
-├── docs/ # written documentation per module
-└── outputs/ # trained models & figures
+│   ├── data_handling/
+│   ├── models/
+│   └── utils/
+├── docs/               # written documentation per module
+└── outputs/            # trained models & figures
+\`\`\`
 
 
 ## Status
