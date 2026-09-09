@@ -13,8 +13,8 @@ approaches across Keras and PyTorch.
 ## Roadmap
 
 - [x] **Module 1 — Data Handling**: memory-based vs. generator-based loading, data augmentation, custom geospatial data loader
-- [ ] **Module 2 — CNN Development**: CNN models in Keras and PyTorch, evaluation and comparison
-- [ ] **Module 3 — CNN / Vision Transformer Integration**: fine-tuning pre-trained ViT models, CNN vs. ViT comparison
+- [x] **Module 2 — CNN Development**: CNN models in Keras and PyTorch, evaluation and comparison
+- [x] **Module 3 — CNN / Vision Transformer Integration**: fine-tuning pre-trained ViT models, CNN vs. ViT comparison
 - [ ] **Module 4 — Final Report**: comparative analysis and final write-up
 
 ## Project Structure
