@@ -12,16 +12,14 @@ approaches across Keras and PyTorch.
 
 ## Roadmap
 
-- [ ] **Module 1 — Data Handling**: memory-based vs. generator-based loading, data augmentation, custom geospatial data loader
+- [x] **Module 1 — Data Handling**: memory-based vs. generator-based loading, data augmentation, custom geospatial data loader
 - [ ] **Module 2 — CNN Development**: CNN models in Keras and PyTorch, evaluation and comparison
 - [ ] **Module 3 — CNN / Vision Transformer Integration**: fine-tuning pre-trained ViT models, CNN vs. ViT comparison
 - [ ] **Module 4 — Final Report**: comparative analysis and final write-up
 
 ## Project Structure
 
-## Project Structure
-
-\`\`\`
+```
 satellite-land-classification/
 ├── data/               # raw & processed data (gitignored)
 ├── notebooks/          # exploratory notebooks per module
@@ -31,8 +29,7 @@ satellite-land-classification/
 │   └── utils/
 ├── docs/               # written documentation per module
 └── outputs/            # trained models & figures
-\`\`\`
-
+```
 
 ## Status
 
@@ -48,8 +45,7 @@ dependency conflicts between the two frameworks:
 - **PyTorch environment** — used for PyTorch-based scripts (e.g. `generator_loader.py`,
   CNN/ViT models). Requires: `torch`, `torchvision`, `Pillow`
 
-You can create these as two separate virtual environments (venv/conda) named however you like,
-e.g.:
+You can create these as two separate virtual environments (venv/conda) named however you like:
 
 ```bash
 # TensorFlow environment
