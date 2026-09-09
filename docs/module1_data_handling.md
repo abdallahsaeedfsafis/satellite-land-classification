@@ -34,6 +34,16 @@ python src/data_handling/download_data.py
 ## Next Steps
 
 - [x] Inspect class distribution (image counts per class)
-- [ ] Implement memory-based data loader (Keras)
-- [ ] Implement generator-based data loader (PyTorch)
-- [ ] Apply data augmentation
+- [x] Implement memory-based data loader (Keras)
+- [x] Implement generator-based data loader (PyTorch)
+- [x] Apply data augmentation
+
+
+## Module 1 — Summary
+
+All Module 1 objectives are complete:
+- Dataset downloaded, extracted, and inspected (6000 images, balanced 50/50 across 2 classes)
+- Two data loading approaches implemented and compared (see `module1_comparison.md`)
+- Data augmentation pipeline implemented (PyTorch/torchvision), validated with a visual preview
+
+**Moving to Module 2**: CNN model development (Keras and PyTorch).
