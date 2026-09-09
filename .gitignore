@@ -25,3 +25,10 @@ outputs/models/*.keras
 .DS_Store
 .vscode/
 *.log
+
+# ==== Model outputs (heavy files) ====
+outputs/models/*.pt
+outputs/models/*.h5
+outputs/models/*.keras
+outputs/models/vit_keras/
+!outputs/models/.gitkeep
