@@ -22,7 +22,6 @@ MODEL_OPTIONS = [
     "CNN (PyTorch)",
     "CNN (Keras)",
     "Vision Transformer (PyTorch)",
-    "Vision Transformer (Keras)",
 ]
 
 
@@ -54,14 +53,6 @@ def load_vit_pytorch():
     return model, processor
 
 
-@st.cache_resource
-def load_vit_keras():
-    from transformers import TFViTForImageClassification
-    from vit_keras import get_image_processor
-    path = os.path.join(PROJECT_ROOT, "outputs", "models", "vit_keras")
-    model = TFViTForImageClassification.from_pretrained(path)
-    processor = get_image_processor()
-    return model, processor
 
 
 def predict_cnn_pytorch(image: Image.Image):
@@ -96,28 +87,18 @@ def predict_vit_pytorch(image: Image.Image):
     return probs
 
 
-def predict_vit_keras(image: Image.Image):
-    model, processor = load_vit_keras()
-    inputs = processor(images=image, return_tensors="np")
-    logits = model(pixel_values=inputs["pixel_values"]).logits.numpy()[0]
-    probs = np.exp(logits) / np.sum(np.exp(logits))
-    return probs
-
 
 PREDICT_FUNCTIONS = {
     "CNN (PyTorch)": predict_cnn_pytorch,
     "CNN (Keras)": predict_cnn_keras,
     "Vision Transformer (PyTorch)": predict_vit_pytorch,
-    "Vision Transformer (Keras)": predict_vit_keras,
 }
 
 
 def render():
     st.title("Land Classification — Prediction")
-    st.write(
-        "Upload a satellite image tile to classify it as agricultural or "
-        "non-agricultural land, using one of the trained models."
-    )
+    st.caption("Upload a satellite image tile and classify it using one of the four trained models.")
+    st.divider()
 
     col1, col2 = st.columns([1, 1])
 
