@@ -1,6 +1,11 @@
 """
-Predict page: upload a satellite image tile and get a prediction from any
-of the four trained models (CNN/ViT, PyTorch/Keras).
+Predict page: upload a satellite image tile and get a prediction from one
+of the trained CNN models (PyTorch or Keras).
+
+Note: Vision Transformer models are excluded from this live demo due to
+their large file size (~330MB each), which exceeds practical hosting limits
+for this free deployment. Their full evaluation results are documented on
+the Model Comparison page and in docs/module3_vit_integration.md.
 """
 
 import os
@@ -21,7 +26,6 @@ CLASS_LABELS = {0: "Non-Agricultural Land", 1: "Agricultural Land"}
 MODEL_OPTIONS = [
     "CNN (PyTorch)",
     "CNN (Keras)",
-    "Vision Transformer (PyTorch)",
 ]
 
 
@@ -40,19 +44,6 @@ def load_cnn_keras():
     import tensorflow as tf
     path = os.path.join(PROJECT_ROOT, "outputs", "models", "cnn_keras.keras")
     return tf.keras.models.load_model(path)
-
-
-@st.cache_resource
-def load_vit_pytorch():
-    from vit_pytorch import build_vit, get_image_processor
-    model = build_vit(num_classes=2)
-    path = os.path.join(PROJECT_ROOT, "outputs", "models", "vit_pytorch.pt")
-    model.load_state_dict(torch.load(path, map_location="cpu"))
-    model.eval()
-    processor = get_image_processor()
-    return model, processor
-
-
 
 
 def predict_cnn_pytorch(image: Image.Image):
@@ -78,27 +69,22 @@ def predict_cnn_keras(image: Image.Image):
     return probs
 
 
-def predict_vit_pytorch(image: Image.Image):
-    model, processor = load_vit_pytorch()
-    inputs = processor(images=image, return_tensors="pt")
-    with torch.no_grad():
-        logits = model(pixel_values=inputs["pixel_values"]).logits
-        probs = torch.softmax(logits, dim=1).numpy()[0]
-    return probs
-
-
-
 PREDICT_FUNCTIONS = {
     "CNN (PyTorch)": predict_cnn_pytorch,
     "CNN (Keras)": predict_cnn_keras,
-    "Vision Transformer (PyTorch)": predict_vit_pytorch,
 }
 
 
 def render():
     st.title("Land Classification — Prediction")
-    st.caption("Upload a satellite image tile and classify it using one of the four trained models.")
+    st.caption("Upload a satellite image tile and classify it using one of the trained CNN models.")
     st.divider()
+    st.caption(
+        "Note: Vision Transformer models are excluded from this live demo due to "
+        "their large file size (~330MB each), which exceeds practical hosting limits "
+        "for this free deployment. Their full evaluation results are available on "
+        "the Model Comparison page."
+    )
 
     col1, col2 = st.columns([1, 1])
 
