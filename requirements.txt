@@ -1,0 +1,9 @@
+streamlit
+torch
+torchvision
+tensorflow
+transformers==4.46.3
+pillow
+pandas
+scikit-learn
+plotly
