@@ -27,8 +27,8 @@ outputs/models/*.keras
 *.log
 
 # ==== Model outputs (heavy files) ====
-outputs/models/*.pt
-outputs/models/*.h5
-outputs/models/*.keras
+# CNN models are small enough to commit (~4.5MB each) and are needed for the
+# deployed Streamlit app. ViT models are excluded due to their large size (~330MB).
+outputs/models/vit_pytorch.pt
 outputs/models/vit_keras/
 !outputs/models/.gitkeep
